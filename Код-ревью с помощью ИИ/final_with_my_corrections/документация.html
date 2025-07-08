@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Документация по Graph BFS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    .class {
+      background-color: #f9f9f9;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .method {
+      background-color: #f0f7ff;
+      border-left: 4px solid #2980b9;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .param {
+      font-weight: bold;
+      color: #16a085;
+    }
+    .returns {
+      font-weight: bold;
+      color: #27ae60;
+    }
+    .exception {
+      font-weight: bold;
+      color: #c0392b;
+    }
+    code {
+      background-color: #f0f0f0;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Документация по Graph BFS</h1>
+
+  <div class="class">
+    <h2>Класс Graph</h2>
+    <p>Представляет ориентированный граф с использованием матрицы смежности и предоставляет функциональность обхода в ширину (BFS).</p>
+
+    <div class="method">
+      <h3>Конструктор</h3>
+      <p><code>Graph()</code></p>
+      <p>Создаёт новый экземпляр класса Graph.</p>
+    </div>
+
+    <div class="method">
+      <h3>Деструктор</h3>
+      <p><code>~Graph()</code></p>
+      <p>Очищает ресурсы, используемые объектом Graph.</p>
+    </div>
+
+    <div class="method">
+      <h3>Метод: loadFromFile</h3>
+      <p><code>bool loadFromFile(const string& fileName)</code></p>
+      <p>Загружает граф из файла, содержащего матрицу смежности.</p>
+      <p><span class="param">Параметры:</span> <code>fileName</code> – имя файла с данными графа.</p>
+      <p><span class="returns">Возвращает:</span> true — если загрузка прошла успешно, false — в случае ошибки (файл не найден или данные некорректны).</p>
+    </div>
+
+    <div class="method">
+      <h3>Метод: breadthFirstSearch</h3>
+      <p><code>vector&lt;int&gt; breadthFirstSearch(int startVertex)</code></p>
+      <p>Выполняет обход графа в ширину (BFS), начиная с указанной вершины.</p>
+      <p><span class="param">Параметры:</span> <code>startVertex</code> – стартовая вершина (нумерация с 0).</p>
+      <p><span class="returns">Возвращает:</span> Вектор достижимых вершин в порядке BFS. Вершины с равным приоритетом сортируются по возрастанию.</p>
+      <p><span class="exception">Исключение:</span> <code>invalid_argument</code>, если <code>startVertex</code> некорректен (отрицательное значение или больше числа вершин).</p>
+    </div>
+
+    <div class="method">
+      <h3>Метод: clear</h3>
+      <p><code>void clear()</code></p>
+      <p>Очищает внутренние структуры графа и сбрасывает количество вершин в 0.</p>
+    </div>
+
+    <div class="method">
+      <h3>Метод: isValidVertex</h3>
+      <p><code>bool isValidVertex(int vertex) const</code></p>
+      <p>Проверяет, существует ли вершина в текущем графе.</p>
+      <p><span class="param">Параметры:</span> <code>vertex</code> – вершина для проверки.</p>
+      <p><span class="returns">Возвращает:</span> true — если вершина существует, false — в противном случае.</p>
+    </div>
+  </div>
+
+  <div class="class">
+    <h2>Главная функция</h2>
+    <p><code>int main()</code></p>
+    <p>Точка входа в программу, обрабатывающая взаимодействие с пользователем и координирующая работу с графом.</p>
+
+    <h3>Последовательность выполнения:</h3>
+    <ol>
+      <li>Запрашивает у пользователя имя входного файла</li>
+      <li>Запрашивает стартовую вершину (нумерация с 0)</li>
+      <li>Загружает граф из указанного файла</li>
+      <li>Выполняет обход в ширину (BFS)</li>
+      <li>Выводит достижимые вершины в порядке BFS</li>
+    </ol>
+
+    <h3>Требования к формату файла:</h3>
+    <ul>
+      <li>Первая строка: количество вершин (n)</li>
+      <li>Следующие n строк: матрица смежности n×n, где:
+        <ul>
+          <li>0 — отсутствие ребра</li>
+          <li>Ненулевые значения — наличие ребра (вес не учитывается)</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="class">
+    <h2>Особенности реализации</h2>
+    <ul>
+      <li>Граф представлен через матрицу смежности</li>
+      <li>BFS реализован с использованием очереди и массива посещённых вершин</li>
+      <li>Вершины с одинаковым приоритетом сортируются по возрастанию</li>
+      <li>Реализована обработка ошибок при неверных вершинах и файлах</li>
+    </ul>
+  </div>
+</body>
+</html>
