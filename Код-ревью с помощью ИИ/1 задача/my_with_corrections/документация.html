@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация по Генератору Паролей</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .class, .file, .enum {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 4px 4px 0;
+        }
+        .member {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .brief {
+            font-style: italic;
+            color: #555;
+        }
+        .detailed {
+            margin-top: 10px;
+        }
+        .enum-value {
+            margin-left: 20px;
+        }
+        .enum-name {
+            font-weight: bold;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Документация по Генератору Паролей</h1>
+        
+        <div class="file">
+            <h2>Файл: PasswordGenerator.h</h2>
+            <p class="brief">Заголовочный файл генератора паролей.</p>
+            <div class="detailed">
+                <p>Содержит определение класса <code>PasswordGenerator</code>.</p>
+            </div>
+        </div>
+        
+        <div class="class">
+            <h2>Класс: PasswordGenerator</h2>
+            <p class="brief">Класс для генерации случайных паролей.</p>
+            <div class="detailed">
+                <p>Поддерживает три уровня сложности: простой, средний и сложный.</p>
+                
+                <h3>Публичные типы</h3>
+                <div class="enum">
+                    <h4>Перечисление: ComplexityLevel</h4>
+                    <p class="brief">Уровни сложности пароля.</p>
+                    <div class="enum-value">
+                        <div class="enum-name">Simple = 1</div>
+                        <p class="brief">Простой уровень (только буквы)</p>
+                    </div>
+                    <div class="enum-value">
+                        <div class="enum-name">Medium</div>
+                        <p class="brief">Средний уровень (буквы и цифры)</p>
+                    </div>
+                    <div class="enum-value">
+                        <div class="enum-name">Strong</div>
+                        <p class="brief">Сложный уровень (буквы, цифры и символы)</p>
+                    </div>
+                </div>
+                
+                <h3>Публичные методы</h3>
+                <div class="member">
+                    <h4>std::string generatePassword(int level)</h4>
+                    <p class="brief">Генерирует пароль заданной сложности.</p>
+                    <div class="detailed">
+                        <p><strong>Параметры:</strong></p>
+                        <ul>
+                            <li><code>level</code> – уровень сложности (1-3)</li>
+                        </ul>
+                        <p><strong>Возвращает:</strong> Сгенерированный пароль</p>
+                        <p><strong>Исключения:</strong></p>
+                        <ul>
+                            <li><code>std::invalid_argument</code> — если уровень некорректен</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Приватные методы</h3>
+                <div class="member">
+                    <h4>bool isValidComplexityLevel(int level) const</h4>
+                    <p class="brief">Проверяет допустимость уровня сложности.</p>
+                </div>
+                <div class="member">
+                    <h4>std::string getCharsetForLevel(int level) const</h4>
+                    <p class="brief">Возвращает набор символов для заданного уровня сложности.</p>
+                </div>
+                <div class="member">
+                    <h4>size_t getPasswordLengthForLevel(int level) const</h4>
+                    <p class="brief">Возвращает длину пароля для заданного уровня сложности.</p>
+                </div>
+                <div class="member">
+                    <h4>char generateRandomChar(const std::string &charset) const</h4>
+                    <p class="brief">Генерирует случайный символ из заданного набора.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="file">
+            <h2>Файл: PasswordGenerator.cpp</h2>
+            <p class="brief">Реализация генератора паролей.</p>
+        </div>
+        
+        <div class="file">
+            <h2>Файл: main.cpp</h2>
+            <p class="brief">Основной файл приложения для генерации паролей.</p>
+            
+            <h3>Функции</h3>
+            <div class="member">
+                <h4>void printMenu()</h4>
+                <p class="brief">Отображает меню выбора сложности пароля.</p>
+            </div>
+            <div class="member">
+                <h4>int main()</h4>
+                <p class="brief">Точка входа в программу.</p>
+                <div class="detailed">
+                    <p>Обрабатывает ввод пользователя и отображает результаты.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

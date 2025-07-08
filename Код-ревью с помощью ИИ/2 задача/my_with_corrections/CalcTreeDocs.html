@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Документация по CalcTree</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; background-color: #fdfdfd; color: #333; }
+    h1, h2, h3 { color: #2c3e50; }
+    pre { background: #f4f4f4; padding: 10px; border-left: 3px solid #ccc; overflow-x: auto; }
+    code { font-family: monospace; background-color: #f4f4f4; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #eee; }
+    section { margin-bottom: 40px; }
+  </style>
+</head>
+<body>
+  <h1>Документация по CalcTree</h1>
+
+  <section>
+    <h2>main.cpp</h2>
+    <h3>Функции</h3>
+    <p><strong>int main()</strong><br>
+    Главная функция программы.<br>
+    Считывает префиксное выражение из файла, строит дерево выражения, упрощает его и выводит на экран.<br>
+    <strong>Возвращает:</strong> 0 при успехе, 1 при ошибке.</p>
+  </section>
+
+  <section>
+    <h2>CalcTree.h</h2>
+
+    <h3>class TreeNode</h3>
+    <p>Узел дерева арифметического выражения.</p>
+    <table>
+      <tr><th>Поле</th><th>Описание</th></tr>
+      <tr><td>int value</td><td>Число от 0 до 9 или код операции (-1 до -6).</td></tr>
+      <tr><td>TreeNode* left</td><td>Левое поддерево.</td></tr>
+      <tr><td>TreeNode* right</td><td>Правое поддерево.</td></tr>
+    </table>
+
+    <h4>Методы</h4>
+    <ul>
+      <li><code>TreeNode(int val)</code> — создаёт узел с заданным значением.</li>
+      <li><code>~TreeNode()</code> — рекурсивно удаляет поддеревья.</li>
+    </ul>
+
+    <h3>class ExpressionTree</h3>
+    <p>Класс для построения, отображения и упрощения дерева выражения.</p>
+
+    <h4>Публичные методы</h4>
+    <ul>
+      <li><code>ExpressionTree(const std::string& expr)</code> — строит дерево из строки.</li>
+      <li><code>~ExpressionTree()</code> — очищает дерево.</li>
+      <li><code>void printTree() const</code> — вывод дерева.</li>
+      <li><code>void simplifyTree()</code> — упрощение дерева.</li>
+      <li><code>TreeNode* getRoot() const</code> — корень дерева.</li>
+    </ul>
+
+    <h4>Приватные методы</h4>
+    <ul>
+      <li><code>void tokenize(...)</code></li>
+      <li><code>TreeNode* buildTreeFromTokens(...)</code></li>
+      <li><code>void printTreeHelper(...)</code></li>
+      <li><code>void clearTree(...)</code></li>
+      <li><code>int evaluate(...)</code></li>
+      <li><code>bool isLeaf(...)</code></li>
+      <li><code>void simplifyHelper(...)</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>CalcTree.cpp</h2>
+
+    <h3>Методы TreeNode</h3>
+    <ul>
+      <li><strong>TreeNode::TreeNode(int val)</strong> — создаёт узел.</li>
+      <li><strong>TreeNode::~TreeNode()</strong> — удаляет поддеревья.</li>
+    </ul>
+
+    <h3>Методы ExpressionTree</h3>
+    <ul>
+      <li><strong>ExpressionTree::ExpressionTree(...)</strong> — создаёт дерево из строки.</li>
+      <li><strong>~ExpressionTree()</strong> — удаляет дерево.</li>
+      <li><strong>tokenize</strong> — разбивает выражение на токены.</li>
+      <li><strong>buildTreeFromTokens</strong> — строит дерево из токенов.</li>
+      <li><strong>printTree / printTreeHelper</strong> — визуализирует дерево.</li>
+      <li><strong>simplifyTree / simplifyHelper</strong> — упрощает выражение.</li>
+      <li><strong>evaluate</strong> — вычисляет выражение (поддержка +, -, *, /, %, ^).</li>
+      <li><strong>getRoot</strong> — возвращает корень дерева.</li>
+      <li><strong>isLeaf</strong> — проверка на лист.</li>
+    </ul>
+  </section>
+</body>
+</html>
